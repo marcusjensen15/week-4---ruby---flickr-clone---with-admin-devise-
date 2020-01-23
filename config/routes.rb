@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   resources :tags
   resources :images
-  devise_for :users
-  root to: "users#index"
+  root to: 'static#home'
   resources :users do
     resources :images
   end

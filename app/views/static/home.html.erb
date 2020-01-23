@@ -1,0 +1,15 @@
+<h2>Welcome</h2>
+
+<% if current_user %>
+
+<%= link_to 'Your Images', user_images_path(current_user) %>
+
+<%= link_to 'All Images', '/images' %>
+
+<%= link_to 'Your Tags', tags_path(current_user) %>
+
+<% else  %>
+
+<p>You need to sign in </p>
+
+<% end  %>

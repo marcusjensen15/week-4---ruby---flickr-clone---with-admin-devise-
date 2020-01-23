@@ -15,5 +15,17 @@
   <%= @image.favorite %>
 </p>
 
+<%= form_for @image do |f| %>
+    <%= f.label "Add as a favorite" %> <br />
+    <%= f.check_box :favorite %> <br />
+    <p><%= f.submit :Submit, class: 'btn btn-primary'  %></p>
+<% end %>
+
+
+<%= form_for @image do |f| %>
+<%= collection_select(:tags, :name, Tag.all, :id, :name) %>
+  <p><%= f.submit :Submit, class: 'btn btn-primary'  %></p>
+  <% end %>
+
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>
