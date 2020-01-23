@@ -30,6 +30,13 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
+  <div class="field">
+    <h4>Make Admin?</h4>
+     <h4><%= f.label "yes" %>
+     <%= f.radio_button :admin, true %></h4>
+     <h4><%= f.label "no" %>
+     <%= f.radio_button :admin, false, :checked => true %></h4>
+  </div>
 
   <div class="actions">
     <%= f.submit "Update" %>

@@ -260,7 +260,6 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   devise
-  factory_bot
   factory_bot_rails
   faker
   httparty (~> 0.13.7)

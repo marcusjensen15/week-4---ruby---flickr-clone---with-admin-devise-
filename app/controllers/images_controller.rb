@@ -27,6 +27,7 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
+    @user = current_user
   end
 
   # POST /images
