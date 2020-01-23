@@ -12,6 +12,11 @@ class ImagesController < ApplicationController
   def show
     @user = current_user
     @tags = Tag.all
+    @tag_array = []
+    @tags.each do |tag|
+      @tag_array.push(tag) if @image.tags.exclude?(tag)
+    end
+    # binding.pry
   end
 
   # GET /images/new
@@ -28,6 +33,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     @user = current_user
+    # binding.pry
     if @image.save
       redirect_to @image, notice: 'Image was successfully created.'
     else
@@ -37,6 +43,7 @@ class ImagesController < ApplicationController
 
   # PATCH/PUT /images/1
   def update
+
     @image = Image.find(params[:id])
     if params[:image]
       if params[:image].fetch("favorite") == "1"
@@ -50,8 +57,16 @@ class ImagesController < ApplicationController
       end
     end
 
-    @tag = Tag.find(params[:tags].fetch("name").to_i)
-    @image.tags << @tag
+    if params[:tags]
+      if
+        @tag = Tag.find(params[:tags].fetch("name").to_i)
+        @image.tags << @tag
+        redirect_to image_path(@image)
+        return
+      end
+    end
+
+
     if @image.update(image_params)
       redirect_to @image, notice: 'Image was successfully updated.'
     else
@@ -86,6 +101,6 @@ class ImagesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def image_params
-    params.permit(:img, :user_id, :favorite, :image_upload, :id)
+    params.require(:image).permit(:img, :user_id, :favorite, :image_upload, :image, :id)
   end
 end

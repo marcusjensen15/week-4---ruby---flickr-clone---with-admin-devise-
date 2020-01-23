@@ -15,6 +15,21 @@
   <%= @image.favorite %>
 </p>
 
+<strong>Tags:</strong>
+<ul>
+  <% array = []%>
+
+  <% @image.tags.each do |tag| %>
+  <% if (array.exclude?(tag.name)) || (array.any? == false)%>
+
+    <li><%= tag.name %></li>
+      <% array.push(tag.name)%>
+    <% end %>
+  <% end %>
+</ul>
+
+
+
 <%= form_for @image do |f| %>
     <%= f.label "Add as a favorite" %> <br />
     <%= f.check_box :favorite %> <br />
@@ -22,9 +37,11 @@
 <% end %>
 
 
+<% if @tag_array.any? %>
 <%= form_for @image do |f| %>
-<%= collection_select(:tags, :name, Tag.all, :id, :name) %>
+<%= collection_select(:tags, :name, @tag_array, :id, :name) %>
   <p><%= f.submit :Submit, class: 'btn btn-primary'  %></p>
+  <% end %>
   <% end %>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
