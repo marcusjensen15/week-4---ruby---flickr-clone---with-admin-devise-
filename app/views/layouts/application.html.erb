@@ -18,6 +18,7 @@
     <% else %>
     <%= link_to "Sign in",  new_user_session_path, method: :get %> | <%= link_to "Sign-up",  new_user_registration_path, method: :get %>
     <% end %>
+  <p>  <%= link_to "Home",  "/" %> | <%= link_to 'All Images', '/images' %> </p>
   </div>
   <div class="container">
     <p class="notice"><%= notice %></p>
