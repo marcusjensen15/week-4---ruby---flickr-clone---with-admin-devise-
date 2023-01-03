@@ -30,7 +30,7 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'faker'
 gem 'devise'
-gem 'httparty', '~> 0.13.7'
+gem 'httparty', '~> 0.21.0'
 gem 'jquery-rails'
 
 # Use ActiveStorage variant
